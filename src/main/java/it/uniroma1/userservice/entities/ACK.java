@@ -17,57 +17,20 @@
  *SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
 package it.uniroma1.userservice.entities;
-
-import java.util.Set;
-
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class User implements UserDetails{
-    
-    private Long id;
+public class ACK<T> {
 
-    private String username;
+    private boolean success;
+    private String message;
+    private T payload;
 
-    private String email;
-
-    private String password;
-
-    private String name;
-
-    private String surname;
-
-    private Boolean enabled;
-    
-    private Set<Role> authorities;
-
-    @Override
-    public boolean isEnabled() {
-        return this.enabled;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
 }
